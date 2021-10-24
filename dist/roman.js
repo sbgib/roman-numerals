@@ -1,6 +1,6 @@
 /*
    Roman Numerals vI
-   © 2021 sbgib, MIT License
+   sbgib © 2021, MIT License
    https://github.com/sbgib/roman-numerals
 */
 ((root, factory) => {
@@ -14,7 +14,6 @@
       root.roman = factory(root);
    }
 })(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, (window) => {
-
    'use strict';
 
    const numerals = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000};
@@ -23,7 +22,9 @@
    /*
       Read a Roman numerals string and return its numeric value
       arg: [input:string] Roman numerals
-      return: [number/null] number
+      return: [number/null] integer
+      ex: roman.read('MMXXI')
+      result: 2021
    */
    roman.read = (text) => {
       let last, result;
@@ -65,9 +66,11 @@
    
    
    /*
-      Write a number in Roman numerals
-      arg: [input:number] number to convert
+      Write an integer in Roman numerals
+      arg: [input:number] Integer to convert
       return: [string/null] Roman numerals
+      ex: roman.write(2021)
+      result: 'MMXXI'
     */
    roman.write = (number) => {
       const keys = Object.keys(numerals);
@@ -123,10 +126,12 @@
    
    
    /*
-      Convert a number to Roman numerals or vice-versa
-      arg: [input:number] number to convert to Roman Numerals, or
-      arg: [input:string] Roman Numerals string to convert to a number
-      return: [number/string/null] conversion result
+      Convert an integer to Roman numerals or vice-versa
+      arg: [input:number] Integer to convert to Roman Numerals, or
+      arg: [input:string] Roman Numerals string to convert to an integer
+      return: [number/string/null] Conversion result
+      ex: roman.convert(2021)
+      result: 'MMXXI'
    */
    roman.convert = (input) => {
       if(typeof input === 'number') {
@@ -134,17 +139,113 @@
       } else if(typeof input === 'string') {
          return read(input);
       } else {
-         console.error('Error: Unknown input. Expected: number or string.');
+         console.error('Error: Unknown input. Number or string expected.');
          return null;
       }
    }
 
    /*
       Allows numerals to be read by an application
-      return: [object] numerals
+      return: [object] Numerals
+      ex: roman.numerals()
+      result: {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
    */
    roman.numerals = () => {
       return numerals;
+   }
+
+   /*
+      Replace Roman numerals in a string with integers
+      arg: [text:string] Text containing one or more instance of Roman Numerals
+      arg: [exclude:array] Optional list of words to exclude (the English word 'I' could be considered here)
+      return: [string/null] Updated string
+      ex: roman.replaceNumerals('This sentence contains XIII words, made up of LXXXVI characters, including XII spaces.')
+      result: 'This sentence contains 13 words, made up of 86 characters, including 12 spaces.'
+   */
+   roman.replaceNumerals = (text, exclude = []) => {
+      //Check for valid argument
+      if(typeof text !== 'string' || text.length === 0) {
+         console.error('Error: String expected.');
+         return null;
+      }
+
+      //Return updated text
+      return text.replace(new RegExp('([' + Object.keys(numerals).join('') + ']+)', 'g'), (match) => (0 <= exclude.indexOf(match) ? match : roman.read(match)));
+   }
+
+   /*
+      Replace integers in a string with Roman numerals
+      arg: [text:string] Text containing one or more numeric values
+      return: [string/null] Updated string
+      ex: roman.replaceNumbers('This sentence contains 13 words, made up of 79 characters, including 12 spaces.')
+      result: 'This sentence contains XIII words, made up of LXXIX characters, including XII spaces.'
+   */
+   roman.replaceNumbers = (text, exclude = []) => {  
+      //Check for valid argument
+      if(typeof text !== 'string' || text.length === 0) {
+         console.error('Error: String expected.');
+         return null;
+      }
+
+      //Return updated text
+      return text.replace(/(\d+)/g, (match) => roman.write(parseInt(match)));
+   }
+
+   /*
+      Read all Roman numerals in a string and return an array of their numeric values
+      arg: [text:string] Text containing one or more numeric values
+      arg: [exclude:array] Optional list of words to exclude (the English word 'I' could be considered here)
+      return: [array/null] Array of integers
+      ex: roman.extractNumerals('This sentence contains XIII words, made up of LXXXVI characters, including XII spaces.')
+      result: [13, 86, 12]
+   */
+   roman.extractNumerals = (text, exclude = []) => {
+      let matches;
+
+      //Check for valid argument
+      if(typeof text !== 'string' || text.length === 0) {
+         console.error('Error: String expected.');
+         return null;
+      }
+
+      //Find Roman numerals in the text
+      matches = text.match(new RegExp('([' + Object.keys(numerals).join('') + ']+)', 'g'));
+
+      if(matches) {
+         //Filter out excluded strings, then convert the rest to integers
+         return matches.filter((match) => exclude.indexOf(match) < 0).map((match) => roman.read(match));
+      } else {
+         console.warn('Warning: No Roman numerals found.');
+         return null;
+      }
+   }
+
+   /*
+      Read all integers in a string and return them as an array of Roman Numerals
+      arg: [text:string] Text containing one or more instance of Roman Numerals
+      return: [array/null] Array of Roman Numeral strings
+      ex: roman.extractNumbers('This sentence contains 13 words, made up of 79 characters, including 12 spaces.')
+      result: ['XIII', 'LXXIX', 'XII']
+   */
+   roman.extractNumbers = (text) => {
+      let matches;
+
+      //Check for valid argument
+      if(typeof text !== 'string' || text.length === 0) {
+         console.error('Error: String expected.');
+         return null;
+      }
+
+      //Find integers in the text
+      matches = text.match(/(\d+)/g);
+
+      if(matches) {
+         //Replace each integer with its equivalent in Roman numerals
+         return matches.map((match) => roman.write(parseInt(match)));
+      } else {
+         console.warn('Warning: No integers found.');
+         return null;
+      };
    }
 
    return roman;
