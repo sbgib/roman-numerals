@@ -9,7 +9,7 @@ This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is
 <script src="roman.min.js"></script>
 ```
 
-**Module bundler**/
+**Module bundler**\
 This module is built based on [The Vanilla JS Toolkit UMD Boilerplate](https://vanillajstoolkit.com/boilerplates/umd/). It supports JavaScript module bundlers and loaders, like [RequireJS](http://requirejs.org/) and [CommonJS](http://www.commonjs.org/).
 
 ## Usage:
@@ -71,4 +71,4 @@ You can learn more about writing Roman numerals manually via the useful resource
 - [Maths is Fun - Roman Numerals](https://www.mathsisfun.com/roman-numerals.html)
 - [Wikipedia - Roman Numerals](https://en.wikipedia.org/wiki/Roman_numerals)
 
-/[@sbgib](https://github.com/sbgib) © 2021
+\[@sbgib](https://github.com/sbgib) © 2021
