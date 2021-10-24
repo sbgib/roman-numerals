@@ -7,7 +7,7 @@ This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is
 [JSFiddle](https://jsfiddle.net/msex0u27/) (`roman.convert()`)
 
 ## Installation
-**Script tag**
+**Script tag**\
 By either direct include or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js):
 ```
 <script src="roman.min.js"></script>
