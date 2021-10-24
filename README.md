@@ -8,11 +8,16 @@ This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is
 
 ## Installation
 **Script tag**
+By either direct include or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js):
 ```
 <script src="roman.min.js"></script>
 ```
 
-**Module bundler**
+```
+<script src="https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js"></script>
+```
+
+**Module bundler**\
 This module is built based on [The Vanilla JS Toolkit UMD Boilerplate](https://vanillajstoolkit.com/boilerplates/umd/). It supports JavaScript module bundlers and loaders, like [RequireJS](http://requirejs.org/) and [CommonJS](http://www.commonjs.org/).
 
 ## Usage
