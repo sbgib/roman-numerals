@@ -3,13 +3,16 @@ Open-source JavaScript module for converting numbers to and from Roman Numerals.
 
 This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is written as a [UMD (Universal Module Definition)](http://jargon.js.org/_glossary/UMD.md) using modern [ES6](https://www.w3schools.com/js/js_es6.asp) techniques.
 
-## Installation:
+## Example
+[JSFiddle](https://jsfiddle.net/msex0u27/) (`convert` function)
+
+## Installation
 **Script tag**
 ```
 <script src="roman.min.js"></script>
 ```
 
-**Module bundler**\
+**Module bundler**
 This module is built based on [The Vanilla JS Toolkit UMD Boilerplate](https://vanillajstoolkit.com/boilerplates/umd/). It supports JavaScript module bundlers and loaders, like [RequireJS](http://requirejs.org/) and [CommonJS](http://www.commonjs.org/).
 
 ## Usage:

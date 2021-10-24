@@ -136,7 +136,7 @@
    roman.convert = (input) => {
       const type = typeof input;
 
-      if(type === 'number' || type === 'string' && /^([\d\.\,]+)$/g.test(input)) {
+      if(type === 'number' || type === 'string' && /^([\d]+)/g.test(input)) {
          return roman.write(parseInt(input));
       } else if(type === 'string') {
          return roman.read(input);
