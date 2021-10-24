@@ -8,7 +8,7 @@ This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is
 
 ## Installation
 **Script tag:**\
-By either direct include or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js).
+By either adding the dist file into a project or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js).
 ```
 <script src="roman.min.js"></script>
 ```
