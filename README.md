@@ -1,39 +1,43 @@
 # Roman Numerals
 Open-source JavaScript module for converting numbers to and from Roman Numerals.
 
-This lightweight (1KB), dependency-free vanilla JS code is written using modern [ES6](https://www.w3schools.com/js/js_es6.asp) techniques.
+This lightweight (<2KB), dependency-free vanilla JS code is written as a [UMD (Universal Module Definition)](http://jargon.js.org/_glossary/UMD.md) using modern [ES6](https://www.w3schools.com/js/js_es6.asp) techniques.
 
 ## Installation:
+### Script tag
 ```
 <script src="roman.min.js"></script>
 ```
 
+### Module bundler
+This module is built based on [The Vanilla JS Toolkit UMD Boilerplate](https://vanillajstoolkit.com/boilerplates/umd/). It supports JavaScript module bundlers and loaders, like [RequireJS](http://requirejs.org/) or [CommonJS](http://www.commonjs.org/).
+
 ## Usage:
 ### Read Roman numerals:
 ```
-read('MMXXI') //2021
-read('MCMLXXXIV') //1984
-read('LXX') //70
-read('XLII') //42
-read('VI') //6
+roman.read('MMXXI') //2021
+roman.read('MCMLXXXIV') //1984
+roman.read('LXX') //70
+roman.read('XLII') //42
+roman.read('VI') //6
 ```
 
 ### Write Roman numerals:
 ```
-write(2021) //'MMXXI'
-write(1984) //'MCMLXXXIV'
-write(70) //'LXX'
-write(42) //'XLII'
-write(6) //'VI'
+roman.write(2021) //'MMXXI'
+roman.write(1984) //'MCMLXXXIV'
+roman.write(70) //'LXX'
+roman.write(42) //'XLII'
+roman.write(6) //'VI'
 ```
 
 ### Convert to/from Roman numerals:
 ```
-convert(2021) //'MMXXI'
-convert('LXX') //70
-convert(70) //'LXX'
-convert('XXXXVI') //46
-convert(6) //'VI'
+roman.convert(2021) //'MMXXI'
+roman.convert('LXX') //70
+roman.convert(70) //'LXX'
+roman.convert('XXXXVI') //46
+roman.convert(6) //'VI'
 ```
 
 ## Further Information
