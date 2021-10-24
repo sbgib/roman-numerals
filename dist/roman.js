@@ -4,21 +4,21 @@
    https://github.com/sbgib/roman-numerals
 */
 ((root, factory) => {
-	if ( typeof define === 'function' && define.amd ) {
-		define([], () => {
-			return factory(root);
-		});
-	} else if ( typeof exports === 'object' ) {
-		module.exports = factory(root);
-	} else {
-		root.roman = factory(root);
-	}
+   if ( typeof define === 'function' && define.amd ) {
+      define([], () => {
+         return factory(root);
+      });
+   } else if ( typeof exports === 'object' ) {
+      module.exports = factory(root);
+   } else {
+      root.roman = factory(root);
+   }
 })(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, (window) => {
 
-	'use strict';
+   'use strict';
 
    const numerals = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000};
-	let roman = {};
+   let roman = {};
 
    /*
       Read a Roman numerals string and return its numeric value
