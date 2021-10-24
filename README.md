@@ -71,4 +71,5 @@ You can learn more about writing Roman numerals manually via the useful resource
 - [Maths is Fun - Roman Numerals](https://www.mathsisfun.com/roman-numerals.html)
 - [Wikipedia - Roman Numerals](https://en.wikipedia.org/wiki/Roman_numerals)
 
-\[@sbgib](https://github.com/sbgib) © 2021
+\
+[@sbgib](https://github.com/sbgib) © 2021

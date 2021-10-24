@@ -35,7 +35,7 @@
           return null;
       }
    
-      //Process first text in string
+      //Process first entry in text
       text = text.trim();
    
       if(0 <= text.indexOf(' ')) {
@@ -127,17 +127,19 @@
    
    /*
       Convert an integer to Roman numerals or vice-versa
-      arg: [input:number] Integer to convert to Roman Numerals, or
+      arg: [input:number/string] Integer to convert to Roman Numerals, or
       arg: [input:string] Roman Numerals string to convert to an integer
       return: [number/string/null] Conversion result
-      ex: roman.convert(2021)
+      ex: roman.convert('2021')
       result: 'MMXXI'
    */
    roman.convert = (input) => {
-      if(typeof input === 'number') {
-         return write(input);
-      } else if(typeof input === 'string') {
-         return read(input);
+      const type = typeof input;
+
+      if(type === 'number' || type === 'string' && /^([\d\.\,]+)$/g.test(input)) {
+         return roman.write(parseInt(input));
+      } else if(type === 'string') {
+         return roman.read(input);
       } else {
          console.error('Error: Unknown input. Number or string expected.');
          return null;

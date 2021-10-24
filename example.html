@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Roman Numerals</title>
+   <style>
+      body {
+         margin: 1rem;
+         font-family: sans-serif;
+      }
+
+      h1 {
+         margin-bottom: 0;
+      }
+
+      #form {
+         margin: 2rem 0 1rem 0;
+      }
+
+      #input {
+         font-size: 1rem;
+         min-width: 15rem;
+         padding: 5px;
+      }
+
+      input[type="submit"] {
+         font-size: 1rem;
+         padding: 5px 10px;
+         margin-left: 0.2rem;
+         cursor: pointer;
+      }
+
+      #output {
+         font-family: monospace;
+         display: block;
+         line-height: 1.5;
+         font-size: 1rem;
+         color: green;
+      }
+   </style>
+   
+</head>
+<body>
+   <h1>Roman Numerals Example</h1>
+   <p>Open-source JavaScript module for converting to and from Roman Numerals.</p>
+   <a href="https://github.com/sbgib/roman-numerals" target="_blank">GitHub Repo (@sbgib)</a>
+   <form id="form">
+      <input id="input" type="text" required="required" autofocus placeholder="Number or Roman numerals" aria-label="Number or Roman numerals" />
+      <input type="submit" value="Convert" />
+   </form>
+   <span id="output"></span>
+   <script defer="defer" src="https://cdn.jsdelivr.net/gh/sbgib/roman-numerals@latest/dist/roman.min.js"></script>
+   <script>
+      document.getElementById('form').addEventListener('submit', (event) => {
+         let input = document.getElementById('input').value;
+         event.preventDefault();
+         document.getElementById('output').innerText = input + ' → ' + roman.convert(input) + '\n' + document.getElementById('output').innerText;
+      });
+   </script>
+</body>
+</html>
