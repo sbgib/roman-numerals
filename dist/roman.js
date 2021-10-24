@@ -114,7 +114,7 @@ let write = (number) => {
    arg: [input:string] Roman Numerals string to convert to a number
    return: [number/string/null] conversion result
 */
-var convert = (input) => {
+let convert = (input) => {
    if(typeof input === 'number') {
       return write(input);
    } else if(typeof input === 'string') {

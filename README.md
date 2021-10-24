@@ -39,8 +39,8 @@ convert(6) //'VI'
 ## Further Information
 You can learn more about writing Roman numerals manually via the useful resources below.
 
-Resources:
-[Maths is Fun - Roman Numerals](https://www.mathsisfun.com/roman-numerals.html)
+Resources:\
+[Maths is Fun - Roman Numerals](https://www.mathsisfun.com/roman-numerals.html)\
 [Wikipedia - Roman Numerals](https://en.wikipedia.org/wiki/Roman_numerals)
 
 
