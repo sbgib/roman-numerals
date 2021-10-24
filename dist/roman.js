@@ -139,5 +139,13 @@
       }
    }
 
+   /*
+      Allows numerals to be read by an application
+      return: [object] numerals
+   */
+   roman.numerals = () => {
+      return numerals;
+   }
+
    return roman;
 });
