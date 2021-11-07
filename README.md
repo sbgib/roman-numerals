@@ -21,6 +21,8 @@ By either adding the dist file into a project or from [jsdelivr.net](https://cdn
 This module is built based on [The Vanilla JS Toolkit UMD Boilerplate](https://vanillajstoolkit.com/boilerplates/umd/). It supports JavaScript module bundlers and loaders, like [RequireJS](http://requirejs.org/) and [CommonJS](http://www.commonjs.org/).
 
 ## Usage
+[Each function definition](https://github.com/sbgib/roman-numerals/blob/main/dist/roman.js) details intended inputs and output. The below gives usage examples for key functions.
+
 **Read Roman numerals:**
 ```
 roman.read('MMXXI') //2021
@@ -47,6 +49,38 @@ roman.convert(70) //'LXX'
 roman.convert('XXXXVI') //46
 roman.convert(6) //'VI'
 ```
+[(example)](https://jsfiddle.net/msex0u27/)
+
+
+**Check for Roman numerals:**
+```
+roman.check('XVI') //true
+roman.check('HI') //false
+```
+
+**Check contains Roman numerals:**
+```
+roman.contains('Count up tp XVI.') //true
+roman.contains('Count up to 16.') //false
+```
+
+**Extract Roman numerals:**
+```
+roman.extract('This sentence contains XIII words, made up of LXXXVI characters, including XII spaces.')
+//['XIII', 'LXXXVI', 'XII']
+```
+
+**Extract Roman numerals as numbers:**
+```
+roman.extractNumerals('This sentence contains XIII words, made up of LXXXVI characters, including XII spaces.')
+//[13, 86, 12]
+```
+
+**Extract numbers as Roman numerals:**
+```
+ex: roman.extractNumbers('This sentence contains 13 words, made up of 79 characters, including 12 spaces.')
+//['XIII', 'LXXIX', 'XII']
+```
 
 **Replace Roman numerals:**
 ```
@@ -60,16 +94,24 @@ roman.replaceNumbers('This sentence contains 13 words, made up of 79 characters,
 //'This sentence contains XIII words, made up of LXXIX characters, including XII spaces.'
 ```
 
-**Extract Roman numerals as numbers:**
+**Add Roman numerals:**
 ```
-roman.extractNumerals('This sentence contains XIII words, made up of LXXXVI characters, including XII spaces.')
-//[13, 86, 12]
+roman.add(['XIII', 'LXXIX', 'XII']) //'CIV'
 ```
 
-**Extract numbers as Roman numerals:**
+**Subtract Roman numerals:**
 ```
-ex: roman.extractNumbers('This sentence contains 13 words, made up of 79 characters, including 12 spaces.')
-//['XIII', 'LXXIX', 'XII']
+roman.subtract('XIII', 'XII') //'I'
+```
+
+**Multiply Roman numerals:**
+```
+roman.multiply(['XIII', 'LXXIX', 'XII']) //'MMMMMMMMMMMMCCCXXIV'
+```
+
+**Subtract Roman numerals:**
+```
+roman.divide('M', 'XII') //'LXXXIII'
 ```
 
 ## Further Information
