@@ -21,7 +21,7 @@ By either adding the dist file into a project or from [jsdelivr.net](https://cdn
 This module is built based on [The Vanilla JS Toolkit UMD Boilerplate](https://vanillajstoolkit.com/boilerplates/umd/). It supports JavaScript module bundlers and loaders, like [RequireJS](http://requirejs.org/) and [CommonJS](http://www.commonjs.org/).
 
 ## Usage
-[Each function definition](https://github.com/sbgib/roman-numerals/blob/main/dist/roman.js) details intended inputs and output. The below gives usage examples for key functions.
+[Each function definition](https://github.com/sbgib/roman-numerals/blob/main/dist/roman.js) details intended inputs and output. Usage examples for key functions are shown below.
 
 **Read Roman numerals:**
 ```
@@ -109,7 +109,7 @@ roman.subtract('XIII', 'XII') //'I'
 roman.multiply(['XIII', 'LXXIX', 'XII']) //'MMMMMMMMMMMMCCCXXIV'
 ```
 
-**Subtract Roman numerals:**
+**Divide Roman numerals:**
 ```
 roman.divide('M', 'XII') //'LXXXIII'
 ```
