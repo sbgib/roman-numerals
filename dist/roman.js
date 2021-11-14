@@ -3,30 +3,19 @@
    sbgib © 2021, MIT License
    https://github.com/sbgib/roman-numerals
 */
-((root, factory) => {
-   if (typeof define === 'function' && define.amd) {
-      define([], () => {
-         return factory(root);
-      });
-   } else if (typeof exports === 'object') {
-      module.exports = factory(root); 
-   } else {
-      root.roman = factory(root);
-   }
-})(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, (window) => {
-   'use strict';
 
+export default (() => {
    const numerals = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000};
    
    let roman = {};
-
+   
    let patternContains = () => (new RegExp('\\b([' + Object.keys(numerals).join('') + ']+)\\b', 'gi'));
    let patternIs = () => (new RegExp('^([' + Object.keys(numerals).join('') + ']+)$', 'gi'));
    let checkArray = array => Array.isArray(array);
    let checkString = text => (typeof text === 'string' && text.length !== 0);
    let checkNumeral = text => (typeof text === 'string' && text.length !== 0 && patternIs().test(text));
-
-
+   
+   
    /*
       Allows numerals to be read by an application
       return: [object] Numerals
@@ -36,8 +25,8 @@
    roman.numerals = () => {
       return numerals;
    }
-
-
+   
+   
    /*
       Read a Roman numerals string and return its numeric value
       arg: [input:string] Roman numerals value
@@ -63,7 +52,7 @@
       //Loop through the string in reverse order to calculate value
       result = text.toUpperCase().split('').reverse().reduce((total, char) => {
          let value = numerals[char];
-
+   
          if(typeof value === 'number') {
             //Check combination of numerals to determine additive or subtractive method
             total += value * (last !== undefined && value < last ? -1 : 1);
@@ -84,16 +73,16 @@
       return: [string/null] Roman numerals value
       ex: roman.write(2021)
       result: 'MMXXI'
-    */
+      */
    roman.write = (number) => {
       const keys = Object.keys(numerals);
       let i, part, output = '';
    
       let writePart = (j, part) => {
          let result, output = '', total = part;
-
+   
          //Attempt additive method first
-
+   
          //Check if more than 3 repetitions of the same numeral would be used (where applicable)
          if(part < 1000 && (numerals[keys[j]] * 4) <= total) {
             return null;
@@ -109,7 +98,7 @@
          if(total !== 0 && 0 < j) {
             //If not, then go to next largest numeral
             result = writePart(j - 1, total);
-
+   
             if (result === null) {
                //Try getting subtractive representation, otherwise, return null
                return (part < numerals[keys[j]] ? writePart(j - 1, numerals[keys[j]] - total) + keys[j] : null);
@@ -117,7 +106,7 @@
                output += result;
             }
          }
-
+   
          return output;
       }
    
@@ -130,7 +119,7 @@
       //Split number into orders of 10 and convert them in order from highest - lowest
       for(i = 3; 0 <= i; i--) {
          part = number - (number % Math.pow(10, i));
-
+   
          if(part !== 0) {
             number -= part;
             output += writePart(keys.length - 1, part);
@@ -151,7 +140,7 @@
    */
    roman.convert = (input) => {
       const type = typeof input;
-
+   
       if(type === 'number' || (type === 'string' && /^([\d]+)/g.test(input))) {
          return roman.write(parseInt(input));
       } else if(type === 'string') {
@@ -161,8 +150,8 @@
          return null;
       }
    }
-
-
+   
+   
    /*
       Check that a string is a Roman numerals value
       arg: [text:string] Text containing one or more numeric values
@@ -174,7 +163,7 @@
       //Find Roman numerals in the text
       return (checkString(text) ? patternIs().test(text) : null);
    }
-
+   
    /*
       Check that a string contains a Roman numerals value
       arg: [text:string] Text
@@ -185,19 +174,19 @@
    */
    roman.contains = (text, exclude = []) => {
       let matches;
-
+   
       //Check for valid argument
       if(!checkString(text)) {
          return null;
       }
-
+   
       //Find Roman numerals in the text
       matches = text.match(patternContains());
-
+   
       return (matches ? 0 < matches.filter(match => exclude.indexOf(match) < 0).length : false);
    }
-
-
+   
+   
    /*
       Read all Roman numerals in a string and return them in an array without converting them
       arg: [text:string] Text containing one or more numeric values
@@ -208,20 +197,20 @@
    */
    roman.extract = (text, exclude = []) => {
       let matches;
-
+   
       //Check for valid arguments
       if(!checkString(text) || !checkArray(exclude)) {
          return null;
       }
-
+   
       //Find Roman numerals in the text
       matches = text.match(patternContains());
-
+   
       //Return null if no Roman numerals are found
       return (matches ? matches : null);
    }
-
-
+   
+   
    /*
       Read all Roman numerals in a string and return an array of their numeric values
       arg: [text:string] Text containing one or more numeric values
@@ -233,12 +222,12 @@
    roman.extractNumerals = (text, exclude = []) => {
       //Extract matches
       const matches = roman.extract(text, exclude);
-
+   
       //Convert matches to Roman numerals
       return (matches ? matches.map(match => roman.read(match)) : null);
    }
-
-
+   
+   
    /*
       Read all integers in a string and return them as an array of Roman Numerals
       arg: [text:string] Text containing one or more Roman Numerals values
@@ -248,20 +237,20 @@
    */
    roman.extractNumbers = (text) => {
       let matches;
-
+   
       //Check for valid argument
       if(!checkString(text)) {
          return null;
       }
-
+   
       //Find integers in the text
       matches = text.match(/(\d+)/g);
-
+   
       //Return null if no integers are found
       return (matches ? matches.map(match => roman.write(parseInt(match))) : null);
    }
-
-
+   
+   
    /*
       Replace Roman numerals in a string with integers
       arg: [text:string] Text containing one or more Roman Numerals values
@@ -275,12 +264,12 @@
       if(!checkString(text) || !checkArray(exclude)) {
          return null;
       }
-
+   
       //Return updated text
       return text.replace(patternContains(), match => (0 <= (exclude.indexOf(match) ? match : roman.read(match))));
    }
-
-
+   
+   
    /*
       Replace integers in a string with Roman numerals
       arg: [text:string] Text containing one or more numeric values
@@ -293,12 +282,12 @@
       if(!checkString(text) || !checkArray(exclude)) {
          return null;
       }
-
+   
       //Return updated text
       return text.replace(/(\d+)/g, match => roman.write(parseInt(match)));
    }
-
-
+   
+   
    /*
       Add an array of Roman numerals values together, returning the result as a Roman numerals value
       arg: [array] Array of Roman Numerals value strings
@@ -310,8 +299,8 @@
       //Convert each numeral, add to total, then convert back
       return (checkArray(array) ? roman.write(array.reduce((total, text) => (total + roman.read(text)), 0) || null) : null);
    }
-
-
+   
+   
    /*
       Subtract one Roman numeral value from another, returning the result as a Roman numerals value
       arg: [positive:string] Roman numerals value
@@ -324,12 +313,12 @@
       //Convert each Roman numerals value
       positive = roman.read(positive);
       negative = roman.read(negative);
-
+   
       //If valid, subtract, then convert back
       return (positive !== null && negative !== null ? roman.write(positive - negative) : null);
    }
-
-
+   
+   
    /*
       Multiply an array of Roman numerals values together, returning the result as a Roman numerals value
       arg: [array] Array of Roman Numerals value strings
@@ -341,8 +330,8 @@
       //Convert each numeral, multiply, then convert back
       return (checkArray(array) ? (roman.write(array.reduce((total, text) => (total * roman.read(text)), 1)) || null) : null);
    }
-
-
+   
+   
    /*
       Divide one Roman numeral value by another, returning the result as a Roman numerals value (whole number only, excluding the remainder)
       arg: [dividend:string] Roman numerals value
@@ -355,10 +344,10 @@
       //Convert each Roman numerals value
       dividend = roman.read(dividend);
       divisor = roman.read(divisor);
-
+   
       //If valid, divide, then convert back
       return (dividend !== null && divisor !== null ? roman.write(Math.floor(dividend/divisor)) : null);
    }
 
    return roman;
-});
+})();

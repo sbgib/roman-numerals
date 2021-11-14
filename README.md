@@ -1,24 +1,33 @@
 # Roman Numerals
 Open-source JavaScript module for converting numbers to and from Roman Numerals.
 
-This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is written as a [UMD (Universal Module Definition)](http://jargon.js.org/_glossary/UMD.md) using modern [ES6](https://www.w3schools.com/js/js_es6.asp) techniques.
+This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is written as a [native module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) using modern [ES6](https://www.w3schools.com/js/js_es6.asp) techniques.
 
 ## Example
-[JSFiddle](https://jsfiddle.net/msex0u27/) (`roman.convert()`)
+[JSFiddle](https://jsfiddle.net/p5qjf0vc/) (`roman.convert()`)
 
 ## Installation
-**Script tag:**\
-By either adding the dist file into a project or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js).
+By either adding the dist file into a project or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js):
 ```
-<script src="roman.min.js"></script>
+<script type="module">
+   import { default as roman } from './roman.min.js';
+
+   //Your code here...
+
+</script>
 ```
 
 ```
-<script src="https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js"></script>
+<script type="module">
+   import { default as roman } from 'https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js';
+
+   //Your code here...
+
+</script>
 ```
 
-**Module bundler:**\
-This module is built based on [The Vanilla JS Toolkit UMD Boilerplate](https://vanillajstoolkit.com/boilerplates/umd/). It supports JavaScript module bundlers and loaders, like [RequireJS](http://requirejs.org/) and [CommonJS](http://www.commonjs.org/).
+## Browser Support
+This module can be loaded directly using any modern browser that [supports ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_support), as well as node.js. No module bundler, loader or additional software is needed.
 
 ## Usage
 [Each function definition](https://github.com/sbgib/roman-numerals/blob/main/dist/roman.js) details intended inputs and output. Usage examples for key functions are shown below.
@@ -49,7 +58,7 @@ roman.convert(70) //'LXX'
 roman.convert('XXXXVI') //46
 roman.convert(6) //'VI'
 ```
-[(example)](https://jsfiddle.net/msex0u27/)
+[(example)](https://jsfiddle.net/p5qjf0vc/)
 
 
 **Check for Roman numerals:**

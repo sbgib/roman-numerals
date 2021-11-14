@@ -48,9 +48,10 @@
    </form>
    <span id="output"></span>
    
-   <script defer="defer" src="https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js"></script>
-   <script>
-      document.getElementById('form').addEventListener('submit', (event) => {
+   <script type="module">
+      import { default as roman } from 'https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js';
+
+      document.getElementById('form').addEventListener('submit', event => {
          let input = document.getElementById('input').value;
          event.preventDefault();
          document.getElementById('output').innerText = input + ' → ' + roman.convert(input) + '\n' + document.getElementById('output').innerText;
