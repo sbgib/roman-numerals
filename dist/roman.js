@@ -60,7 +60,7 @@ let read = (text) => {
    return: [string/null] Roman numerals value
    ex: roman.write(2021)
    result: 'MMXXI'
-   */
+*/
 let write = (number) => {
    const keys = Object.keys(numerals);
    let i, part, output = '';
