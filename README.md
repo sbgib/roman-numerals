@@ -4,30 +4,25 @@ Open-source JavaScript module for converting numbers to and from Roman Numerals.
 This lightweight (<1KB minified and gzipped), dependency-free vanilla JS code is written as a [native module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) using modern [ES6](https://www.w3schools.com/js/js_es6.asp) techniques.
 
 ## Example
-[JSFiddle](https://jsfiddle.net/p5qjf0vc/) (`roman.convert()`)
+[JSFiddle](https://jsfiddle.net/o0yxzcmu/) (`roman.convert()`)
 
 ## Installation
-By either adding the dist file into a project or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js):
+By importing the module into a script (either adding the `dist/` file directly to a project or from [jsdelivr.net](https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js)):
 ```
-<script type="module">
-   import { default as roman } from './roman.min.js';
+import * as roman from './roman.min.js';
 
-   //Your code here...
+//Your code here...
 
-</script>
 ```
 
 ```
-<script type="module">
-   import { default as roman } from 'https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js';
+import * as roman from 'https://cdn.jsdelivr.net/gh/sbgib/roman-numerals/dist/roman.min.js';
 
-   //Your code here...
-
-</script>
+//Your code here...
 ```
 
 ## Browser Support
-This module can be loaded directly using any modern browser that [supports ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_support), as well as node.js. No module bundler, loader or additional software is needed.
+This module can be loaded directly using any modern browser that [supports ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#browser_support), as well as node.js. No module bundler, loader or additional software is needed (although optionally using a [module bundler](https://gomakethings.com/how-to-bundle-es-modules-with-rollup.js/) can improve performance in the browser).
 
 ## Usage
 [Each function definition](https://github.com/sbgib/roman-numerals/blob/main/dist/roman.js) details intended inputs and output. Usage examples for key functions are shown below.
@@ -58,7 +53,7 @@ roman.convert(70) //'LXX'
 roman.convert('XXXXVI') //46
 roman.convert(6) //'VI'
 ```
-[(example)](https://jsfiddle.net/p5qjf0vc/)
+[(example)](https://jsfiddle.net/o0yxzcmu/)
 
 
 **Check for Roman numerals:**
